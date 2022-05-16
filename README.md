@@ -7,6 +7,13 @@
 
 This script is based on the work of **Samuel Pinto** (saribe), but has been completely reengineered. https://github.com/saribe/eModal
 
+### Installation
+NPM:
+`npm install jquery-emodal`
+
+Yarn:
+ `yarn add jquery-emodal`
+
 ### Example And Usage
 The *index.html* file in the **example/** folder contains many examples of using the script that illustrate its full potential.
 
