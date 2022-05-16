@@ -1,0 +1,17 @@
+{
+  "name": "jquery-eModal",
+  "version": "2.0.0",
+  "description": "A easy way to manage Bootstrap 4 modal dialogs using javaScript",
+  "license": "MIT",
+  "author": "Reload Laboratorio Multimediale (https://www.reloadlab.it)",
+  "main": "dist/jquery.eModal.js",
+  "repository": {
+	  "type": "git",
+	  "url": "git+https://github.com/Reload-Lab/jquery-eModal.git"
+  },
+  "dependencies": {
+	  "jquery": "3.6.0",
+	  "bootstrap": "4.6.1"
+  },
+  "packageManager": "yarn@3.2.1"
+}
