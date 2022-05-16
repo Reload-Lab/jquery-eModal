@@ -1,0 +1,686 @@
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMODAL EXAMPLE</title>
+
+<!-- meta tags -->
+<meta name="description" content="EMODAL EXAMPLE">
+<meta name="keywords" content="">
+<meta name="robots" content="noindex,nofollow">
+
+<!-- favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+<!-- stylesheets -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<!-- header -->
+<header><a href="https://www.reloadlab.it" class="logo"></a></header>
+
+<!-- tabs -->
+<nav class="navbar navbar-expand-lg navbar-light justify-content-center py-3 py-lg-0">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#modalTab"> <span class="navbar-toggler-icon"></span> </button>
+  <div class="collapse navbar-collapse justify-content-center" id="modalTab">
+    <ul class="navbar-nav">
+      <li class="nav-item active" data-target="#alert-tab"> <a class="nav-link">Alert</a> </li>
+      <li class="nav-item" data-target="#ajax-tab"> <a class="nav-link">ajax</a> </li>
+      <li class="nav-item" data-target="#confirm-tab"> <a class="nav-link">confirm</a> </li>
+      <li class="nav-item" data-target="#prompt-tab"> <a class="nav-link">prompt</a> </li>
+      <li class="nav-item" data-target="#youtube-tab"> <a class="nav-link">youtube</a> </li>
+      <li class="nav-item" data-target="#iframe-tab"> <a class="nav-link">iframe</a> </li>
+      <li class="nav-item" data-target="#gmap-tab"> <a class="nav-link">gmap</a> </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- main -->
+<div class="container-centro">
+  <div class="container">
+    <div class="tab-content"> 
+      
+      <!-- alert-tab -->
+      <div id="alert-tab" class="tab-pane fade show active">
+        <h1 class="d-flex">ALERT<a class="open-alert button ml-auto px-3 py-1">Show</a></h1>
+        <div id="text-alert">
+          <div class="alert alert-success">You welcome! This is an example of alert</div>
+        </div>
+        <p>In this example the alert returns a Promise (<em>async: true</em>). When the modal is closed, the <em>hiddenModal</em> function resolves the Promise. </p>
+        <div class="code_example">
+          <pre class="prettyprint linenums">&lt;script&gt;
+$(document).ready(function(){
+	
+	function alertDemo(){
+		
+		var title = 'Alert modal';
+		
+		params = {
+			async: true,
+			id: 'alert-demo',
+			cssClass: 'alert-class',
+			message: $('#text-alert'),
+			buttons: [
+				{
+					close: true,
+					text: 'Close'
+				}
+			],
+			onHide: hiddenModal
+		};
+	
+		return $.eModal
+			.alert(params, title)
+			.then(function(info){
+				
+				console.info(info);
+			});
+			
+		function hiddenModal(e){
+			
+			var defer = $.eModal.defer();
+			defer.resolve('Alert modal is close.');
+		}
+	}
+
+	$('.open-alert').on('click', alertDemo);
+});
+&lt;/script&gt;</pre>
+        </div>
+      </div>
+      
+      <!-- ajax-tab -->
+      <div id="ajax-tab" class="tab-pane fade">
+        <h1 class="d-flex">AJAX<a class="open-ajax button ml-auto px-3 py-1">Show</a></h1>
+        <p>In this example, the <em>ajax.html</em> file is loaded into the body element of the modal. The <em>ajax.success</em> property calls the<em> greenifyText</em> function, which colors the text green. </p>
+        <div class="code_example">
+          <pre class="prettyprint linenums">&lt;script&gt;
+$(document).ready(function(){
+	
+	function ajaxDemo(){
+		
+		var title = 'Ajax modal';
+		
+		params = {
+			async: true,
+			ajax: {
+				url: 'ajax.html?_uid' + Math.random(),
+				success: greenifyText
+			},
+			buttons: [
+				{
+					close: true,
+					text: 'Close'
+				}
+			],
+			onHide: hiddenModal
+		};
+	
+		return $.eModal
+			.ajax(params, title)
+			.then(function(html){
+				
+				console.info('Ajax modal is visible.');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Ajax modal is close.');
+		}
+		
+		function greenifyText(html){
+			
+			console.info('Now the text is green.');
+			
+			return $(html).find('p')
+				.css('color', 'green')
+				.end()
+				.get(0).outerHTML;
+		}
+	}
+
+	$('.open-ajax').on('click', ajaxDemo);
+});
+&lt;/script&gt;</pre>
+        </div>
+      </div>
+      
+      <!-- confirm-tab -->
+      <div id="confirm-tab" class="tab-pane fade">
+        <h1 class="d-flex">CONFIRM<a class="open-confirm button ml-auto px-3 py-1">Show</a></h1>
+        <p>In this example I set the button labels 'OK' and 'Cancel' to 'Accept' and 'Dismiss' by calling the <em>label</em> method. The 'Accept' button is colored green through the <em>btn-success</em> Bootstrap class. When I click on 'Accept' I write 'Ok' in the console; instead when I click on 'Dismiss' I write 'Ko' in the console. </p>
+        <div class="code_example">
+          <pre class="prettyprint linenums">&lt;script&gt;
+$(document).ready(function(){
+	
+	function confirmDemo(){
+		
+		params = {
+			title: 'Confirm modal',
+			message: 'You welcome! Want clean code?',
+			confirm: {
+				label: 'Accept',
+				style: [
+					'btn-success',
+					'btn-danger'
+				]
+			},
+			onHide: hiddenModal
+	
+		return $.eModal
+			.label('Accept', 'Dismiss')
+			.confirm(params)
+			.then(function(){
+				
+				console.info('Ok');
+			}, function(){
+				
+				console.info('Ko');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Confirm modal is close.');
+		}
+	}
+
+	$('.open-confirm').on('click', confirmDemo);
+});
+&lt;/script&gt;</pre>
+        </div>
+      </div>
+      
+      <!-- prompt-tab -->
+      <div id="prompt-tab" class="tab-pane fade">
+        <h1 class="d-flex">PROMPT<a class="open-prompt button ml-auto px-3 py-1">Show</a></h1>
+        <p>In this example the prompt form asks what the result of 2 plus 2 is. If the answer is correct, I write in the console '4 is the right value'; otherwise if the answer is wrong, 'X is not the right value'. The form field is of type 'number' (<em>prompt.type</em>) and is mandatory (<em>prompt.required</em>). The default value is '3' (<em>prompt.value</em>). </p>
+        <div class="code_example">
+          <pre class="prettyprint linenums">&lt;script&gt;
+$(document).ready(function(){
+	
+	function promptDemo(){
+			
+		params = {
+			title: 'Prompt modal',
+			message: 'You welcome! What is 2 plus 2?',
+			prompt: {
+				label: 'Send',
+				required: true,
+				type: 'number',
+				value: '3'
+			},
+			onHide: hiddenModal
+		};
+	
+		return $.eModal
+			.label('Send', 'Cancel')
+			.prompt(params)
+			.then(function(val){
+				
+				if(val == 4){
+				
+					console.log(val + ' is the right answer');
+				} else{
+					
+					console.log(val + ' is not the right answer');
+				}
+			}, function(){
+				
+				console.info('No value entered.');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Prompt modal is close.');
+		}
+	}
+
+	$('.open-prompt').on('click', promptDemo);
+});
+&lt;/script&gt;</pre>
+        </div>
+      </div>
+      
+      <!-- youtube-tab -->
+      <div id="youtube-tab" class="tab-pane fade">
+        <h1 class="d-flex">YOUTUBE<a class="open-youtube button ml-auto px-3 py-1">Show</a></h1>
+        <p>This example opens a YouTube video in an iframe. Through the object <em>iframe .attributes</em> set the attributes of the IFRAME tag. The <em>useBin</em> property activates the recycle bin, where the video will be saved waiting to be recalled. This way the video will not be reloaded again. It is mandatory to set an ID for the item saved in the bin (<em>binId</em>).</p>
+        <div class="code_example">
+          <pre class="prettyprint linenums">&lt;script&gt;
+$(document).ready(function(){
+	
+	function youtubeDemo(){
+		
+		var title = 'Youtube embed modal';
+		
+		params = {
+			async: true,
+			iframe: {
+				url: 'https://www.youtube.com/embed/s8Iar_t7CW4',
+				attributes: {
+					'id': 'youtube',
+					'allow': 'autoplay; encrypted-media',
+					'allowfullscreen': true
+				}
+			},
+			buttons: [
+				{
+					close: true,
+					text: 'Close'
+				}
+			],
+			onHide: hiddenModal,
+			useBin: true,
+			binId: 'youtube-demo'
+		};
+	
+		return $.eModal
+			.embed(params, title)
+			.then(function(html){
+				
+				console.info('Video is visible.');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Video is close.');
+		}
+	}
+
+	$('.open-youtube').on('click', youtubeDemo);
+});
+&lt;/script&gt;</pre>
+        </div>
+      </div>
+      
+      <!-- iframe-tab -->
+      <div id="iframe-tab" class="tab-pane fade">
+        <h1 class="d-flex">IFRAME<a class="open-iframe button ml-auto px-3 py-1">Show</a></h1>
+        <p>This example loads a page within the IFRAME. Through the properties <em>width</em>, <em>height</em> and <em>position</em> are set the height, the width and the horizontal and vertical position of the modal with respect to the browser window.</p>
+        <div class="code_example">
+          <pre class="prettyprint linenums">&lt;script&gt;
+$(document).ready(function(){
+	
+	function iframeDemo(){
+		
+		var title = 'Iframe modal';
+		
+		params = {
+			async: true,
+			iframe: {
+				url: 'https://www.reloadlab.it/'
+			},
+			width: '60%',
+			height: '60%',
+			position: ['middle', 'center'],
+			onHide: hiddenModal,
+			useBin: true,
+			binId: 'iframe-demo',
+			overlayClose: false
+		};
+	
+		return $.eModal
+			.iframe(params, title)
+			.then(function(html){
+				
+				console.info('Iframe is visible.');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Iframe is close.');
+		}
+	}
+
+	$('.open-iframe').on('click', iframeDemo);
+});
+&lt;/script&gt;</pre>
+        </div>
+      </div>
+      
+      <!-- gmap-tab -->
+      <div id="gmap-tab" class="tab-pane fade">
+        <h1 class="d-flex">GMAP<a class="open-gmap button ml-auto px-3 py-1">Show</a></h1>
+        <p>This example loads a Gmap map into the IFRAME. The width of the modal is set through the <em>size</em> properties.</p>
+        <div class="code_example">
+          <pre class="prettyprint linenums">&lt;script&gt;
+$(document).ready(function(){
+	
+	function gmapDemo(){
+		
+		var title = 'Gmap embed modal';
+		
+		params = {
+			async: true,
+			iframe: {
+				url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.74185604113!2d12.510330315442406!3d41.91990777921887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f616bfdd075cd%3A0x9c0d155c61911b7!2sVia%20Rovereto%2C%207%2C%2000198%20Roma%20RM!5e0!3m2!1sit!2sit!4v1642872512358!5m2!1sit!2sit',
+				attributes: {
+					'id': 'gmap'
+				}
+			},
+			buttons: [
+				{
+					close: true,
+					text: 'Close'
+				}
+			],
+			onHide: hiddenModal,
+			useBin: true,
+			binId: 'gmap-demo',
+			size: 'xl'
+		};
+	
+		return $.eModal
+			.embed(params, title)
+			.then(function(html){
+				
+				console.info('Gmap is visible.');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Gmap is close.');
+		}
+	}
+
+	$('.open-gmap').on('click', gmapDemo);
+});
+&lt;/script&gt;</pre>
+        </div>
+      </div>
+      
+      <!-- / --> 
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<footer class="text-center"><a href="https://www.reloadlab.it">www.reloadlab.it</a></footer>
+
+<!-- scripts --> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> 
+<script src="../dist/jquery.eModal.js"></script> 
+<script>
+$(document).ready(function(){
+	
+	$('#modalTab li').on('click', function(e){
+		e.preventDefault();
+		
+		if(!$(this).hasClass('active')){
+			
+			$('#modalTab li.active').removeClass('active');
+			$(this).tab('show')
+				.addClass('active');
+		}
+	});
+});
+</script> 
+<script>
+$(document).ready(function(){
+	
+	function alertDemo(){
+		
+		var title = 'Alert modal';
+		
+		params = {
+			async: true,
+			id: 'alert-demo',
+			cssClass: 'alert-class',
+			message: $('#text-alert'),
+			buttons: [
+				{
+					close: true,
+					text: 'Close'
+				}
+			],
+			onHide: hiddenModal
+		};
+	
+		return $.eModal
+			.alert(params, title)
+			.then(function(info){
+				
+				console.info(info);
+			});
+			
+		function hiddenModal(e){
+			
+			var defer = $.eModal.defer();
+			defer.resolve('Alert modal is close.');
+		}
+	}
+	
+	function ajaxDemo(){
+		
+		var title = 'Ajax modal';
+		
+		params = {
+			async: true,
+			ajax: {
+				url: 'ajax.html?_uid' + Math.random(),
+				success: greenifyText
+			},
+			buttons: [
+				{
+					close: true,
+					text: 'Close'
+				}
+			],
+			onHide: hiddenModal
+		};
+	
+		return $.eModal
+			.ajax(params, title)
+			.then(function(html){
+				
+				console.info('Ajax modal is visible.');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Ajax modal is close.');
+		}
+		
+		function greenifyText(html){
+			
+			console.info('Now the text is green.');
+			
+			return $(html).find('p')
+				.css('color', 'green')
+				.end()
+				.get(0).outerHTML;
+		}
+	}
+	
+	function confirmDemo(){
+		
+		params = {
+			title: 'Confirm modal',
+			message: 'You welcome! Want clean code?',
+			confirm: {
+				label: 'Accept',
+				style: [
+					'btn-success',
+					'btn-danger'
+				]
+			},
+			onHide: hiddenModal
+		};
+	
+		return $.eModal
+			.label('Accept', 'Dismiss')
+			.confirm(params)
+			.then(function(){
+				
+				console.info('Ok');
+			}, function(){
+				
+				console.info('Ko');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Confirm modal is close.');
+		}
+	}
+	
+	function promptDemo(){
+			
+		params = {
+			title: 'Prompt modal',
+			message: 'You welcome! What is 2 plus 2?',
+			prompt: {
+				label: 'Send',
+				required: true,
+				type: 'number',
+				value: '3'
+			},
+			onHide: hiddenModal
+		};
+	
+		return $.eModal
+			.label('Send', 'Cancel')
+			.prompt(params)
+			.then(function(val){
+				
+				if(val == 4){
+				
+					console.log(val + ' is the right answer');
+				} else{
+					
+					console.log(val + ' is not the right answer');
+				}
+			}, function(){
+				
+				console.info('No value entered.');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Prompt modal is close.');
+		}
+	}
+	
+	function youtubeDemo(){
+		
+		var title = 'Youtube embed modal';
+		
+		params = {
+			async: true,
+			iframe: {
+				url: 'https://www.youtube.com/embed/s8Iar_t7CW4',
+				attributes: {
+					'id': 'youtube',
+					'allow': 'autoplay; encrypted-media',
+					'allowfullscreen': true
+				}
+			},
+			buttons: [
+				{
+					close: true,
+					text: 'Close'
+				}
+			],
+			onHide: hiddenModal,
+			useBin: true,
+			binId: 'youtube-demo'
+		};
+	
+		return $.eModal
+			.embed(params, title)
+			.then(function(html){
+				
+				console.info('Video is visible.');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Video is close.');
+		}
+	}
+	
+	function iframeDemo(){
+		
+		var title = 'Iframe modal';
+		
+		params = {
+			async: true,
+			iframe: {
+				url: 'https://www.reloadlab.it/'
+			},
+			width: '60%',
+			height: '60%',
+			position: ['middle', 'center'],
+			onHide: hiddenModal,
+			useBin: true,
+			binId: 'iframe-demo',
+			overlayClose: false
+		};
+	
+		return $.eModal
+			.iframe(params, title)
+			.then(function(html){
+				
+				console.info('Iframe is visible.');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Iframe is close.');
+		}
+	}
+	
+	function gmapDemo(){
+		
+		var title = 'Gmap embed modal';
+		
+		params = {
+			async: true,
+			iframe: {
+				url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.74185604113!2d12.510330315442406!3d41.91990777921887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f616bfdd075cd%3A0x9c0d155c61911b7!2sVia%20Rovereto%2C%207%2C%2000198%20Roma%20RM!5e0!3m2!1sit!2sit!4v1642872512358!5m2!1sit!2sit',
+				attributes: {
+					'id': 'gmap'
+				}
+			},
+			buttons: [
+				{
+					close: true,
+					text: 'Close'
+				}
+			],
+			onHide: hiddenModal,
+			useBin: true,
+			binId: 'gmap-demo',
+			size: 'xl'
+		};
+	
+		return $.eModal
+			.embed(params, title)
+			.then(function(html){
+				
+				console.info('Gmap is visible.');
+			});
+			
+		function hiddenModal(e){
+			
+			console.info('Gmap is close.');
+		}
+	}
+	
+	$('.open-alert').on('click', alertDemo);
+	$('.open-ajax').on('click', ajaxDemo);
+	$('.open-confirm').on('click', confirmDemo);
+	$('.open-prompt').on('click', promptDemo);
+	$('.open-youtube').on('click', youtubeDemo);
+	$('.open-iframe').on('click', iframeDemo);
+	$('.open-gmap').on('click', gmapDemo);
+}); 
+</script> 
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=javascript&amp;skin=sons-of-obsidian"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+/* $ FONT */
+
+
+body {
+	background: #006ba1;
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
+	color: #3a3a3a;
+}
+header {
+	padding: 20px 0;
+}
+header a.logo {
+	display: block;
+	width: 257px;
+	height: 83px;
+	margin: 0 auto;
+	background: url("img/logo.png") center center no-repeat;
+}
+.navbar {
+	padding: 0 1rem;
+	background: #fff;
+	border-bottom: 1px solid #c3c3c3;
+	-webkit-box-shadow: 0px 14px 12px -15px rgba(0,0,0,0.8);
+	box-shadow: 0px 14px 8px -16px rgb(0 0 0 / 80%);
+}
+.navbar button.navbar-toggler span {
+	color: #006ba1!important;
+}
+.navbar-nav {
+	padding-top: 20px;
+}
+.navbar-nav .nav-item {
+	margin: 0 10px;
+	border-bottom: 3px solid transparent;
+	cursor: pointer;
+}
+.navbar-nav .nav-item:hover,
+.navbar-nav .nav-item.active {
+	border-bottom: 3px solid #ffd105;
+}
+.navbar-nav .nav-item .nav-link {
+	font-size: 18px;
+	font-weight: 500;
+	color: #3b3b3b;
+	text-align: center;
+	text-transform: uppercase;
+}
+.container-centro {
+	background: #fafafa;
+	padding: 45px 0;
+}
+.container-centro h1 {
+	font-size: 32px;
+	color: #006ba1;
+}
+.container-centro a.button {
+	align-self: center;
+	background: #ffd105;
+	color: #006ba1;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 18px;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+.container-centro a.button:hover {
+	text-decoration: none;
+}
+footer {
+	background: #006ba1;
+	padding: 20px 0;
+}
+footer a {
+	font-weight: 700;
+	color: #fff;
+}
+footer a:hover {
+	color: #ffd105;
+	text-decoration: none;
+}
