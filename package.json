@@ -1,6 +1,6 @@
 {
   "name": "jquery-emodal",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A easy way to manage Bootstrap 4 modal dialogs using javaScript",
   "keywords": [
     "modal",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0",
-	"popper.js": "^1.16.1",
+    "popper.js": "^1.16.1",
     "jquery": "^3.0.0"
   },
   "bugs": "https://github.com/Reload-Lab/jquery-eModal/issues",
