@@ -1,6 +1,6 @@
 {
   "name": "jquery-emodal",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A easy way to manage Bootstrap 4 modal dialogs using javaScript",
   "keywords": [
     "modal",
