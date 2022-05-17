@@ -2,16 +2,19 @@
   "name": "jquery-emodal",
   "version": "2.0.0",
   "description": "A easy way to manage Bootstrap 4 modal dialogs using javaScript",
+  "keywords": ["modal", "popup", "bootstrap4", "alert", "confirm", "prompt", "dialog boxes", "modal windows", "youtube popup", "iframe popup", "ajax popup", "google map popup"],
   "license": "MIT",
-  "author": "Reload Laboratorio Multimediale (https://www.reloadlab.it)",
+  "author": "Reload - Laboratorio Multimediale <info@reloadlab.it> (https://www.reloadlab.it)",
   "main": "dist/jquery.eModal.js",
+  "files": ["LICENSE", "README.md", "dist/", "example/*.{js,html,css}"],
   "repository": {
 	  "type": "git",
 	  "url": "git+https://github.com/Reload-Lab/jquery-eModal.git"
   },
   "dependencies": {
-	  "jquery": "3.6.0",
-	  "bootstrap": "4.6.1"
+	  "jquery": "^3.0.0",
+	  "bootstrap": "^4.0.0"
   },
+  "bugs": "https://github.com/Reload-Lab/jquery-eModal/issues",
   "packageManager": "yarn@3.2.1"
 }
