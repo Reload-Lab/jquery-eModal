@@ -14,6 +14,9 @@ NPM:
 Yarn:
 `yarn add jquery-emodal`
 
+Bower:
+`bower install Reload-Lab/jquery-eModal`
+
 ### Example And Usage
 The *index.html* file in the **example/** folder contains many examples of using the script that illustrate its full potential.
 
