@@ -23,7 +23,7 @@
     "LICENSE",
     "README.md",
     "dist/",
-    "example/*.{js,html,css}"
+    "example/"
   ],
   "repository": {
     "type": "git",
