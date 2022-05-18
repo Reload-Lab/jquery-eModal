@@ -1,4 +1,4 @@
-[![GitHub Release](https://img.shields.io/badge/release-2.0.4-green)](https://github.com/Reload-Lab/jquery-eModal/releases)
+[![GitHub Release](https://img.shields.io/badge/release-2.1.0-green)](https://github.com/Reload-Lab/jquery-eModal/releases)
 [![GitHub License](https://img.shields.io/badge/license-MIT-orange)](https://github.com/Reload-Lab/jquery-eModal/blob/main/LICENSE)
 
 **$.eModal** is a easy way to manage **Bootstrap 4** modal dialogs using javaScript. It is not only a system that facilitates the use of the Bootstrap modal dialog, but an alternative to dialog boxes, such as alert, confirm and prompt.
