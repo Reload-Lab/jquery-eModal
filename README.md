@@ -12,7 +12,7 @@ NPM:
 `npm install jquery-emodal`
 
 Yarn:
- `yarn add jquery-emodal`
+`yarn add jquery-emodal`
 
 ### Example And Usage
 The *index.html* file in the **example/** folder contains many examples of using the script that illustrate its full potential.
@@ -29,7 +29,7 @@ To initialize your modal:
 ```html
 <script>
 $(document).ready(function(){
-           $.eModal.ajax('ajax.html?_uid' + Math.random(), 'Ajax modal');
+   $.eModal.ajax('ajax.html?_uid' + Math.random(), 'Ajax modal');
 }); 
 </script> 
 ```
@@ -38,9 +38,9 @@ or add an event to some element.
 <button class="open-ajax" type="button">OPEN MODAL</button>
 <script>
 $(document).ready(function(){
-           $('.open-ajax').on('click', function(e){
-                      $.eModal.ajax('ajax.html?_uid' + Math.random(), 'Ajax modal');
-		   });
+   $('.open-ajax').on('click', function(e){
+      $.eModal.ajax('ajax.html?_uid' + Math.random(), 'Ajax modal');
+   });
 }); 
 </script> 
 ```
@@ -136,3 +136,5 @@ It is possible to set numerous characteristics of the modal through an object to
 | **$.eModal.defer**  | Return the Promise to be able to perform a resolve or reject.  |
 | **$.eModal.size**  | It is possible to add a size to those provided by Bootstrap (sm, lg, xl). *Returns the $.eModal object for concatenation*.  |
 | **$.eModal.emptyBin**  | The method empties the recycle bin. *Returns the $.eModal object for concatenation*.  |
+
+Created by Domenico Gigante - [Reload Laboratorio Multimediale](https://www.reloadlab.it "Reload Laboratorio Multimediale"), Rome, IT
