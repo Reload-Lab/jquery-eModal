@@ -1,3 +1,4 @@
+# jQuery eModal Plugin
 [![GitHub Release](https://img.shields.io/badge/release-2.1.0-green)](https://github.com/Reload-Lab/jquery-eModal/releases)
 [![GitHub License](https://img.shields.io/badge/license-MIT-orange)](https://github.com/Reload-Lab/jquery-eModal/blob/main/LICENSE)
 
