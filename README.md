@@ -6,7 +6,10 @@
 
 **Bootstrap 4** and **jQuery** are dependencies to jquery.eModal.js.
 
-This script is based on the work of **Samuel Pinto** (saribe), but has been completely reengineered. https://github.com/saribe/eModal
+This plugin is based on the work of **Samuel Pinto** (saribe), but has been completely reengineered. https://github.com/saribe/eModal
+
+### Dependencies
+The plugin requires **jQuery 3** and **Bootstrap 4**.
 
 ### Installation
 NPM:
@@ -21,7 +24,7 @@ Bower:
 ### Example And Usage
 The *index.html* file in the **example/** folder contains many examples of using the script that illustrate its full potential.
 
-You can see the script in action at this url:
+You can see the plugin in action at this url:
 https://www.reloadlab.it/cantieri/jquery-eModal/example/
 
 To initialize your modal:
