@@ -1,5 +1,5 @@
 {
-  "name": "jquery-emodal",
+  "name": "Reload-Lab/jquery-eModal",
   "description": "A easy way to manage Bootstrap 4 modal dialogs using javaScript",
   "main": "dist/jquery.eModal.js",
   "authors": [
