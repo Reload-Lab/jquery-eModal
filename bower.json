@@ -40,7 +40,7 @@
     "url": "git+https://github.com/Reload-Lab/jquery-eModal.git"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "jquery": "^3.0.0"
+    "bootstrap": "4.6.2",
+    "jquery": "^3.7.0"
   }
 }
