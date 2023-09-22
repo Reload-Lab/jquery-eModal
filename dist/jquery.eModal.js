@@ -2,8 +2,8 @@
  * jQuery eModal Plugin
  * https://github.com/Reload-Lab/jquery-eModal
  *
- * @updated September 13, 2023
- * @version 2.1.1
+ * @updated September 22, 2023
+ * @version 2.1.2
  *
  * @author Domenico Gigante <domenico.gigante@reloadlab.it>
  * @copyright (c) 2023 Reload Laboratorio Multimediale <info@reloadlab.it> (https://www.reloadlab.it)
@@ -166,7 +166,7 @@
 		root.modal = getModal;
 		root.defer = getDefer;
 		root.size = addSize;
-		root.version = '2.1.1';
+		root.version = '2.1.2';
 
 		return root;
 
